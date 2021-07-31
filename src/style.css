@@ -14,12 +14,14 @@ GLOBAL VARIABLES
     --clr-gray-blue: hsl(212, 23%, 69%);
     --clr-light-gray-blue: hsl(210, 46%, 95%);
 }
-*, *::before, *::after{
+*,
+*::before,
+*::after {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-body{
+body {
     height: 100vh;
     background: var(--clr-light-gray-blue);
     display: flex;
@@ -30,20 +32,20 @@ body{
     font-family: var(--ff-primary);
     font-size: var(--ff-size);
 }
-.card{
-    height: 500px;
-    width: min(85vw, 330px); /* change to rem */
+.card {
+    height: 508px;
+    width: 20rem;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,.4); /* remove later */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* TODO: remove later */
     background: white;
 }
-.card-img{
+.card-img {
     background: url("./images/drawers.jpg") no-repeat center / cover;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     height: 220px;
 }
-.card-content{
+.card-content {
     display: flex;
     flex-direction: column;
     padding-left: 2rem;
@@ -52,69 +54,73 @@ body{
     padding-bottom: 1rem;
     gap: 1em;
 }
-.header-text{
+.header-text {
     font-size: 16px;
     font-weight: 700;
     color: var(--clr-v-dark-gray-blue);
 }
-.text-content{
-    color: var(--clr-gray-blue);
+.text-content {
+    color: var(--clr-desat-dark-blue);
     padding-top: 1em;
-    padding-bottom: 1em;
+    padding-bottom: .3em;
 }
-.share-container{
+.share-container {
     position: relative;
     background: inherit;
-    transition: all .4s;
+    transition: all 0.4s;
 }
 .share-content,
-.share-content-active{
+.share-content-active {
     position: absolute;
     top: 0;
     left: 0;
 }
-.share-content{
+.share-content {
     width: 100%;
     display: flex;
     justify-content: space-around;
     top: 10px;
 }
-.share-content .person-img{
+.share-content .person-img {
     background: url("./images/avatar-michelle.jpg") no-repeat center / cover;
     width: 45px;
     height: 45px;
     border-radius: 50%;
 }
-.share-content .details{
+.share-content .details {
     display: flex;
     flex-direction: column;
     margin-left: -2rem;
     margin-top: auto;
     margin-bottom: auto;
 }
-.share-content .name{
+.share-content .name {
     font-weight: 700;
     color: var(--clr-v-dark-gray-blue);
 }
-.share-content .date{
+.share-content .date {
     color: var(--clr-gray-blue);
 }
-.share-content .share-icon{
+.share-icon,
+.share-icon-active {
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    background: url("./images/icon-share.svg") no-repeat var(--clr-light-gray-blue);
     background-size: 18px;
+    transition: transform 0.3s;
+    position: relative;
+}
+.share-icon {
+    background: url("./images/icon-share.svg") no-repeat var(--clr-light-gray-blue);
     background-position: 50% 50%;
     margin: auto 0;
-    margin-right: .5rem;
-    position: relative;
-    transition: transform .3s;
+    margin-right: 0.7rem;
 }
 /* animating box-shadow on pseudo element instead of directly on element to improve performance
     Source: Kevin Powell - Youtube
 */
-.share-icon::before{
+.share-icon::before,
+.share-icon-active::before {
     content: "";
     position: absolute;
     top: 0;
@@ -122,17 +128,24 @@ body{
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    box-shadow: 0 5px 5px hsla(217, 19%, 35%, .3);
     opacity: 0;
-    transition: opacity .3s;
+    transition: opacity 0.3s;
 }
-.share-icon:hover::before{
+.share-icon::before {
+    box-shadow: 0 5px 5px hsla(217, 19%, 35%, 0.3);
+}
+.share-icon-active::before {
+    box-shadow: 0 5px 5px hsla(210, 46%, 70%, 0.3);
+}
+.share-icon:hover::before,
+.share-icon-active:hover::before {
     opacity: 1;
 }
-.share-content .share-icon:hover{
+.share-icon:hover,
+.share-icon-active:hover {
     cursor: pointer;
 }
-.share-content-active{
+.share-content-active {
     display: none;
     width: 100%;
     justify-content: space-around;
@@ -144,37 +157,33 @@ body{
     color: var(--clr-gray-blue);
     letter-spacing: 5px;
     text-transform: uppercase;
+    margin-left: .7rem;
 }
-.share-content-active .icons{
+.share-content-active .icons {
     margin-left: -2rem;
 }
-.share-content-active img{
+.share-content-active img {
     width: 20px;
     height: 20px;
-    margin: 0 .5rem;
+    margin: 0 0.5rem;
 }
-.share-content-active div{
+.share-content-active div {
     display: flex;
     place-items: center;
 }
-.share-icon-active{
+.share-icon-active {
     display: inline;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background: url("./images/icon-share-active.svg") no-repeat
-        var(--clr-desat-dark-blue);
-    background-size: 18px;
-    background-position: 50% 50%;
+    background: url("./images/icon-share-active.svg") no-repeat var(--clr-desat-dark-blue);
+    background-position: 50% 50%; /* needs to be with the background to work */
     margin-right: 1rem;
 }
-.share-container.active .share-content{
+.share-container.active .share-content {
     display: none;
 }
-.share-container.active .share-content-active{
+.share-container.active .share-content-active {
     display: flex;
 }
-.share-container.active{
+.share-container.active {
     height: 71px;
     border-bottom-right-radius: inherit;
     border-bottom-left-radius: inherit;
@@ -186,4 +195,10 @@ body{
 }
 .attribution a {
     color: hsl(228, 45%, 44%);
+}
+@media screen and (min-width: 600px) { /* trying to get to landscape mode of smaller phones */
+    body{
+        height: initial; /* so the card stops hugging the edges */
+        padding: 2rem 0;
+    }
 }
