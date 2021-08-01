@@ -36,7 +36,7 @@ body {
     height: 508px;
     width: 20rem;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* TODO: remove later */
+    box-shadow: 0 0 20px hsla(212, 23%, 69%, .6);
     background: white;
     display: flex;
     flex-direction: column;
@@ -64,7 +64,7 @@ body {
 .text-content {
     color: var(--clr-desat-dark-blue);
     padding-top: 1em;
-    padding-bottom: .3em;
+    padding-bottom: 0.3em;
 }
 .share-container {
     position: relative;
@@ -85,8 +85,8 @@ body {
 }
 .share-content .person-img {
     background: url("./images/avatar-michelle.jpg") no-repeat center / cover;
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
 }
 .share-content .details {
@@ -159,7 +159,7 @@ body {
     color: var(--clr-gray-blue);
     letter-spacing: 5px;
     text-transform: uppercase;
-    margin-left: .7rem;
+    margin-left: 0.7rem;
 }
 .share-content-active .icons {
     margin-left: -2rem;
@@ -198,17 +198,19 @@ body {
 .attribution a {
     color: hsl(228, 45%, 44%);
 }
-@media screen and (min-device-width: 600px) { /* trying to get to landscape mode of smaller phones */
-    body{
+@media screen and (min-device-width: 600px) {
+    /* trying to get to landscape mode of smaller phones */
+    body {
         height: initial; /* so the card stops hugging the edges */
         padding: 5rem 0;
     }
-} 
+}
 @media screen and (min-width: 992px) {
-    body{
+/* @media screen and (min-width: 700px) { */
+    body {
         height: 100vh;
     }
-    .card{
+    .card {
         flex-direction: row;
         height: 16rem;
         width: 45rem;
@@ -224,12 +226,62 @@ body {
     .card-content {
         padding-left: 2.5rem;
         padding-right: 2.5rem;
-        padding-top: 2rem;
+        padding-top: 1.5rem;
+        padding-bottom: 0;
+        gap: 0.5em;
     }
     .header-text {
         font-size: 20px;
     }
     .text-content {
+        padding-top: 0.6em;
         line-height: 1.3rem;
+    }
+    .share-container {
+        margin-top: 0.5rem;
+        position: relative;
+    }
+    .share-content {
+        position: static;
+    }
+    .share-content-active {
+        display: none;
+        position: absolute;
+        width: 55%;
+        padding: 1.2em 0;
+        border-radius: 10px;
+        background: var(--clr-v-dark-gray-blue);
+        transform: translate(101%, -170%);
+        box-shadow: 0px 8px 8px 0 hsla(210, 46%, 70%, 0.3);
+    }
+    .share-content-active::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        border: 10px solid;
+        border-color: var(--clr-v-dark-gray-blue) transparent transparent transparent;
+        transform: translate(-50%, 97%);
+    }
+    .share-content-active .share-icon-active {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 208%);
+    }
+    .share-content-active .icons {
+        margin-left: -2.5rem;
+    }
+    .share-container.active .share-content {
+        display: flex;
+    }
+    .share-container.active .share-content-active {
+        display: flex;
+    }
+    .share-container.active {
+        height: auto;
+        border: none;
+        background: initial;
     }
 }
