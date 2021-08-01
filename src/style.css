@@ -64,12 +64,12 @@ body {
 .text-content {
     color: var(--clr-desat-dark-blue);
     padding-top: 1em;
-    padding-bottom: 0.3em;
+    padding-bottom: .3em;
 }
 .share-container {
     position: relative;
     background: inherit;
-    transition: all 0.4s;
+    transition: background-color .4s;
 }
 .share-content,
 .share-content-active {
@@ -109,17 +109,17 @@ body {
     height: 35px;
     border-radius: 50%;
     background-size: 18px;
-    transition: transform 0.3s;
+    transition: transform .3s;
     position: relative;
 }
 .share-icon {
     background: url("./images/icon-share.svg") no-repeat var(--clr-light-gray-blue);
     background-position: 50% 50%;
     margin: auto 0;
-    margin-right: 0.7rem;
+    margin-right: .7rem;
 }
 /* animating box-shadow on pseudo element instead of directly on element to improve performance
-    Source: Kevin Powell - Youtube
+Source: Kevin Powell - Youtube
 */
 .share-icon::before,
 .share-icon-active::before {
@@ -131,7 +131,7 @@ body {
     height: 100%;
     border-radius: 50%;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity .3s;
 }
 .share-icon::before {
     box-shadow: 0 5px 5px hsla(217, 19%, 35%, 0.3);
@@ -159,7 +159,7 @@ body {
     color: var(--clr-gray-blue);
     letter-spacing: 5px;
     text-transform: uppercase;
-    margin-left: 0.7rem;
+    margin-left: .7rem;
 }
 .share-content-active .icons {
     margin-left: -2rem;
@@ -167,7 +167,7 @@ body {
 .share-content-active img {
     width: 20px;
     height: 20px;
-    margin: 0 0.5rem;
+    margin: 0 .5rem;
 }
 .share-content-active div {
     display: flex;
@@ -178,6 +178,7 @@ body {
     background: url("./images/icon-share-active.svg") no-repeat var(--clr-desat-dark-blue);
     background-position: 50% 50%; /* needs to be with the background to work */
     margin-right: 1rem;
+    margin-top: -2px;
 }
 .share-container.active .share-content {
     display: none;
@@ -186,9 +187,9 @@ body {
     display: flex;
 }
 .share-container.active {
-    height: 71px;
-    border-bottom-right-radius: inherit;
-    border-bottom-left-radius: inherit;
+    height: 70px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     background: var(--clr-v-dark-gray-blue);
 }
 .attribution {
@@ -201,12 +202,12 @@ body {
 @media screen and (min-device-width: 600px) {
     /* trying to get to landscape mode of smaller phones */
     body {
-        height: initial; /* so the card stops hugging the edges */
+        /* so the card stops hugging the edges */
+        height: initial;
         padding: 5rem 0;
     }
 }
 @media screen and (min-width: 992px) {
-/* @media screen and (min-width: 700px) { */
     body {
         height: 100vh;
     }
@@ -228,17 +229,17 @@ body {
         padding-right: 2.5rem;
         padding-top: 1.5rem;
         padding-bottom: 0;
-        gap: 0.5em;
+        gap: .5em;
     }
     .header-text {
         font-size: 20px;
     }
     .text-content {
-        padding-top: 0.6em;
+        padding-top: .6em;
         line-height: 1.3rem;
     }
     .share-container {
-        margin-top: 0.5rem;
+        margin-top: .5rem;
         position: relative;
     }
     .share-content {
