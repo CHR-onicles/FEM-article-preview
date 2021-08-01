@@ -38,10 +38,11 @@ Users should be able to:
 
 - Semantic HTML5 markup
 - CSS
+- Javascript
 
 ### What I learned
 
-I learned how to change the appearance and state of elements based on device width.
+I learned how to change the appearance and state of elements based on device width and also how to structure elements properly in HTML for easy manipulation on different screen sizes.
 
 ## Author
 
