@@ -38,6 +38,8 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* TODO: remove later */
     background: white;
+    display: flex;
+    flex-direction: column;
 }
 .card-img {
     background: url("./images/drawers.jpg") no-repeat center / cover;
@@ -196,9 +198,38 @@ body {
 .attribution a {
     color: hsl(228, 45%, 44%);
 }
-@media screen and (min-width: 600px) { /* trying to get to landscape mode of smaller phones */
+@media screen and (min-device-width: 600px) { /* trying to get to landscape mode of smaller phones */
     body{
         height: initial; /* so the card stops hugging the edges */
-        padding: 2rem 0;
+        padding: 5rem 0;
+    }
+} 
+@media screen and (min-width: 992px) {
+    body{
+        height: 100vh;
+    }
+    .card{
+        flex-direction: row;
+        height: 16rem;
+        width: 45rem;
+    }
+    .card-img {
+        background: url("./images/drawers.jpg") no-repeat 10% center / cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: initial;
+        border-bottom-left-radius: 10px;
+        height: auto;
+        width: 45rem;
+    }
+    .card-content {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+        padding-top: 2rem;
+    }
+    .header-text {
+        font-size: 20px;
+    }
+    .text-content {
+        line-height: 1.3rem;
     }
 }
